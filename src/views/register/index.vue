@@ -6,7 +6,7 @@
       <!-- 标题-->
       <div class="title-box"></div>
       <!-- 表单区域 -->
-      <el-form :model="form" :rules="rulesForm" ref="regRef">
+      <el-form :model="form" :rules="regRules" ref="regRef">
         <!-- 用户名 -->
         <el-form-item prop="username">
           <el-input v-model="form.username" placeholder="请输入用户名"></el-input>
@@ -26,7 +26,7 @@
         <!-- 注册按钮和去登录链接 -->
         <el-form-item>
           <el-button type="primary" class="btn-reg" @click="registerFn">注册</el-button>
-          <el-link type="info" class="log-link">去登录</el-link>
+          <el-link type="info" class="log-link" @click="$router.push('/log')">去登录</el-link>
         </el-form-item>
       </el-form>
     </div>
@@ -58,7 +58,7 @@ export default {
         repassword: ''
       },
       // 声明表单的验证规则对象
-      rulesForm: {
+      regRules: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
           {
