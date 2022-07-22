@@ -10,6 +10,13 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'space-before-function-paren': ['error', 'never']
+    'space-before-function-paren': ['error', 'never'],
+    // 'vue/multi-word-component-names': [
+    //   'error',
+    //   {
+    //     ignores: ['index'] // 需要忽略的组件名
+    //   }
+    // ]
+    'vue/multi-word-component-names': 'off'
   }
 }
