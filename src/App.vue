@@ -4,14 +4,7 @@
 </template>
 
 <script>
-import { registerAPI } from '@/api/index.js'
-
-export default {
-  async created() {
-    const { data: res } = await registerAPI()
-    console.log(res)
-  }
-}
+export default {}
 </script>
 
 <style lang="less" scoped></style>
