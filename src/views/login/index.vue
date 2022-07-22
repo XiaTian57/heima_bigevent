@@ -29,6 +29,9 @@
 </template>
 
 <script>
+import { loginAPI } from '@/api/index.js'
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'Login',
   data() {
@@ -50,12 +53,20 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['updateToken']),
     loginFn() {
       // js兜底验证
-      this.$refs.loginRef.validate(valid => {
+      this.$refs.loginRef.validate(async valid => {
         // 验证失败
         if (!valid) return false
-        // 验证成功
+        // 验证成功 调用接口验证数据库并返回验证结果
+        const { data: res } = await loginAPI(this.loginForm)
+        // 1.登陆失败
+        if (res.code !== 0) return this.$message.error(res.message)
+        // 2.登陆成功 保存token到vuex
+        this.$message.success(res.message)
+        this.updateToken(res.token)
+        // console.log(res)
       })
     }
   }
