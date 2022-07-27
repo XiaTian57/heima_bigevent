@@ -64,6 +64,7 @@ export default {
         .then(() => {
           // 确认执行退出操作 清除vuex
           this.$store.commit('updateToken', '')
+          this.$store.commit('updateUserInfo', '')
           this.$router.push('/log')
           this.$message({
             type: 'success',
