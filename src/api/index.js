@@ -41,3 +41,14 @@ export const getUserInfoAPI = () => {
     }
   })
 }
+
+// 获取侧边栏数据
+export const getMenusAPI = () => {
+  return Axios({
+    url: '/my/menus',
+    method: 'GET',
+    headers: {
+      Authorization: store.state.token
+    }
+  })
+}

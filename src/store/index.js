@@ -11,7 +11,15 @@ export default new Vuex.Store({
     // 用户信息 {id,username,nicname,email,user_pic}
     userInfo: {}
   },
-  getters: {},
+  getters: {
+    // 计算属性定义userInfo的键值对
+    username(state) {
+      return state.userInfo.username
+    }, // 用户名
+    // 上面的简写形式
+    nicname: state => state.userInfo.nicname, // 昵称
+    user_pic: state => state.userInfo.user_pic // 头像
+  },
   mutations: {
     // 给state存入token
     updateToken(state, val) {
