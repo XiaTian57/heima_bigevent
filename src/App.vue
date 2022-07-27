@@ -4,7 +4,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  created() {
+    this.$store.dispatch('getUserInfo')
+  }
+}
 </script>
 
 <style lang="less" scoped></style>

@@ -1,5 +1,7 @@
 // 封装请求具体接口的方法，每个方法只请求一个地址。
 import Axios from '@/utils/request.js'
+// 导入vuex相关
+import store from '@/store/index.js'
 
 // 导出接口方法，逻辑页面按需导入
 // 注册接口
@@ -25,6 +27,17 @@ export const loginAPI = ({ username, password }) => {
     data: {
       username,
       password
+    }
+  })
+}
+
+// 根据用户名/token获取用户信息
+export const getUserInfoAPI = () => {
+  return Axios({
+    url: '/my/userinfo',
+    method: 'GET', // get 不写时默认为get方式
+    headers: {
+      Authorization: store.state.token
     }
   })
 }

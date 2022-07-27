@@ -53,6 +53,7 @@ export default {
     }
   },
   methods: {
+    // 使用vuex中的mutation里的方法1引入.第二种直接使用->$store.commit('方法名')
     ...mapMutations(['updateToken']),
     loginFn() {
       // js兜底验证
