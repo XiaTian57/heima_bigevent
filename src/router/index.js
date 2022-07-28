@@ -13,13 +13,25 @@ const router = new VueRouter({
   ]
 })
 
+const whiteList = ['/log', '/reg'] // 白名单
 // 全局前置导航守卫
 router.beforeEach((to, from, next) => {
   const token = store.state.token
-  if (token && !store.state.userInfo.username) {
-    store.dispatch('getUserInfo')
+  // 有token证明已经登录（token过期了怎么办？后端返回结果是的HTTP响应状态为401）
+  if (token) {
+    if (token && !store.state.userInfo.username) {
+      store.dispatch('getUserInfo')
+    }
+    next()
+  } else {
+    // 没有token且不在白名单
+    // 数组.includes(参数)，参数在数组中则返回true，否则是false
+    if (whiteList.includes(to.path)) {
+      next()
+    } else {
+      next('/log')
+    }
   }
-  next()
 })
 
 export default router

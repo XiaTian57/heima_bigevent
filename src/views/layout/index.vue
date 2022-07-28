@@ -56,7 +56,6 @@
           text-color="#fff"
           active-text-color="#409EFF"
           unique-opened
-          router
         >
           <template v-for="item in menus">
             <el-menu-item v-if="!item.children" :index="item.indexPath" :key="item.indexPath">
