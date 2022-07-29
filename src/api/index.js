@@ -45,3 +45,47 @@ export const getMenusAPI = () => {
     method: 'GET'
   })
 }
+
+// 跟新用户信息
+export const updateUserInfoAPI = ({ id, username, nickname, email, user_pic }) => {
+  return Axios({
+    url: '/my/userinfo',
+    method: 'PUT',
+    data: {
+      id,
+      username,
+      nickname,
+      email,
+      user_pic
+    }
+  })
+}
+
+// 跟新用户头像
+export const updateUserPicAPI = avatar => {
+  return Axios({
+    url: '/my/update/avatar',
+    method: 'PATCH',
+    data: {
+      avatar // 头像base64字符串
+    }
+  })
+}
+
+// 修改密码
+/**
+ *
+ * @param {*} param0{ old_pwd:旧密码, new_pwd:新密码, re_pwd:确认密码 }
+ * @returns Promise对象
+ */
+export const updateUserPwdAPI = ({ old_pwd, new_pwd, re_pwd }) => {
+  return Axios({
+    url: '/my/updatepwd',
+    method: 'PATCH',
+    data: {
+      old_pwd,
+      new_pwd,
+      re_pwd
+    }
+  })
+}

@@ -67,7 +67,7 @@ export default {
         // 2.登陆成功 保存token到vuex
         this.$message.success(res.message)
         this.updateToken(res.token)
-        this.$router.push('/index')
+        this.$router.push('/')
         // console.log(res)
       })
     }

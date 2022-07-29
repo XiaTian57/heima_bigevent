@@ -6,12 +6,16 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: [
-    { path: '/', redirect: '/index' },
     {
-      path: '/index',
+      path: '/',
       component: () => import('@/views/layout/index.vue'),
-      redirect: '/index/home',
-      children: [{ path: 'home', component: () => import('@/views/home/index.vue') }]
+      redirect: '/home',
+      children: [
+        { path: 'home', component: () => import('@/views/home/index.vue') },
+        { path: 'user-info', component: () => import('@/views/user/userInfo.vue') },
+        { path: 'user-avatar', component: () => import('@/views/user/userpic.vue') },
+        { path: 'user-pwd', component: () => import('@/views/user/userpwd.vue') }
+      ]
     },
     { path: '/reg', component: () => import('@/views/register/index.vue') },
     { path: '/log', component: () => import('@/views/login/index.vue') }

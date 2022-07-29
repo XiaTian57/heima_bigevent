@@ -17,8 +17,10 @@ export default new Vuex.Store({
       return state.userInfo.username
     }, // 用户名
     // 上面的简写形式
-    nicname: state => state.userInfo.nicname, // 昵称
-    user_pic: state => state.userInfo.user_pic // 头像
+    nickname: state => state.userInfo.nickname, // 昵称
+    user_pic: state => state.userInfo.user_pic, // 头像
+    id: state => state.userInfo.id,
+    email: state => state.userInfo.email
   },
   mutations: {
     // 给state存入token
@@ -35,7 +37,7 @@ export default new Vuex.Store({
     async getUserInfo(store) {
       const { data: res } = await getUserInfoAPI()
       store.commit('updateUserInfo', res.data)
-      console.log(res.data)
+      // console.log(res.data)
     }
   },
   modules: {},
