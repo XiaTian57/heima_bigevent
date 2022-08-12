@@ -89,3 +89,99 @@ export const updateUserPwdAPI = ({ old_pwd, new_pwd, re_pwd }) => {
     }
   })
 }
+
+// 获取文章分类列表
+export const getArtCateListAPI = () => {
+  return Axios({
+    url: '/my/cate/list'
+  })
+}
+
+// 保存用户添加的文章分类
+/**
+ *
+ * @param {*} param0 {cate_name:文章分类名字, cate_alias：文章分类别名 }
+ * @returns Promise对象
+ */
+export const saveArtCateAPI = ({ cate_name, cate_alias }) => {
+  return Axios({
+    url: 'my/cate/add',
+    method: 'POST',
+    data: {
+      cate_name,
+      cate_alias
+    }
+  })
+}
+
+// 文章分类的修改接口
+export const updateArtCateAPI = ({ id, cate_name, cate_alias }) => {
+  return Axios({
+    url: '/my/cate/info',
+    method: 'PUT',
+    data: {
+      id,
+      cate_name,
+      cate_alias
+    }
+  })
+}
+
+// 删除文章分类
+export const deleteArtCateAPI = id => {
+  return Axios({
+    url: '/my/cate/del',
+    method: 'DELETE',
+    params: {
+      id
+    }
+  })
+}
+/**
+ *
+ * @param {*} fd form-data表单数据对象
+ * @returns promise对象
+ */
+// 发布文章
+export const uploadArticleAPI = fd => {
+  return Axios({
+    url: '/my/article/add',
+    method: 'POST',
+    // 接口文档要求form-data表单数据对象格式，因为数据中有文件。
+    // 不能使用普通对象，axios会把对象转换为json格式.
+    data: fd
+  })
+}
+
+/**
+ *
+ * @param {*} param0 { pagemun:当前页码, pagesize： 当前页面要展示的数据条数, cate_id：文章分类id, state：文章状态（已发布或草稿） }
+ * @returns promise对象
+ */
+// 获取文章列表
+export const getArtListAPI = ({ pagenum, pagesize, cate_id, state }) => {
+  return Axios({
+    url: '/my/article/list',
+    params: {
+      pagenum,
+      pagesize,
+      cate_id,
+      state
+    }
+  })
+}
+
+// 获取文章详情
+export const getArtMsgAPI = artid => {
+  return Axios({
+    url: `/my/article/info?id=${artid}`
+  })
+}
+
+// 删除文章
+export const deleteArtAPI = artid => {
+  return Axios({
+    url: `/my/article/info?id=${artid}`,
+    method: 'DELETE'
+  })
+}

@@ -4,9 +4,11 @@ import store from '@/store/index.js'
 import router from '@/router/index.js'
 import { Message } from 'element-ui'
 
+// 按需导出与默认导出不互相影响
+export const baseURL = 'http://big-event-vue-api-t.itheima.net' // 接口和数据库资源所在的服务器地址
 // 给请求设置基地址，使用时再赋值并拼接完整地址（类似：'/api/user）
 const myAxios = axios.create({
-  baseURL: 'http://big-event-vue-api-t.itheima.net'
+  baseURL
 })
 
 // 定义请求拦截器

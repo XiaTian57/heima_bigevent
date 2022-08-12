@@ -11,10 +11,15 @@ const router = new VueRouter({
       component: () => import('@/views/layout/index.vue'),
       redirect: '/home',
       children: [
+        // 侧边栏首页 --> 二级路由
         { path: 'home', component: () => import('@/views/home/index.vue') },
+        // 侧边栏个人中心 --> 二级路由
         { path: 'user-info', component: () => import('@/views/user/userInfo.vue') },
         { path: 'user-avatar', component: () => import('@/views/user/userpic.vue') },
-        { path: 'user-pwd', component: () => import('@/views/user/userpwd.vue') }
+        { path: 'user-pwd', component: () => import('@/views/user/userpwd.vue') },
+        // 侧边栏文章管理 --> 二级路由
+        { path: 'art-cate', component: () => import('@/views/article/artCate.vue') },
+        { path: 'art-list', component: () => import('@/views/article/artList.vue') }
       ]
     },
     { path: '/reg', component: () => import('@/views/register/index.vue') },
